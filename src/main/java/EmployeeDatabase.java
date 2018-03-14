@@ -56,6 +56,12 @@ public class EmployeeDatabase {
         /*
          * Implement this function
          */
+        int total = 0;
+        if (findManager(employee) != null) {
+            total++;
+            countManagersAbove(findManager(employee));
+        }
+        return total;
     }
 
     /**
@@ -70,6 +76,16 @@ public class EmployeeDatabase {
         /*
          * Implement this function
          */
+        int total = 0;
+        Employee next = new Employee("", "");
+        for (int i = 0; i < employees.size(); i++) {
+            if (findManager(employees.get(i)) == employee) {
+                total++;
+                next = employees.get(i);
+            }
+        }
+        countEmployeesUnder(next);
+        return total;
     }
 
     /**
